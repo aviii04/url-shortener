@@ -7,4 +7,6 @@ package com.github.aviii04.urlshortner.service;
  */
 public interface UrlShortenerService {
 
+	String convertToShortUrl(String longUrl);
+
 }

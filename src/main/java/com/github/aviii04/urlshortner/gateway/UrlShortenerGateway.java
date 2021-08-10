@@ -8,4 +8,6 @@ package com.github.aviii04.urlshortner.gateway;
  */
 public interface UrlShortenerGateway {
 
+	String convertToShortUrl(String longUrl);
+
 }

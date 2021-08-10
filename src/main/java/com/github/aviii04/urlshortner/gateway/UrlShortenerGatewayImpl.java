@@ -11,4 +11,10 @@ public class UrlShortenerGatewayImpl implements UrlShortenerGateway {
 	@Autowired
 	private UrlShortenerService urlShortenerService;
 
+	@Override
+	public String convertToShortUrl(String longUrl) {
+		return urlShortenerService.convertToShortUrl(longUrl);
+	}
+	
+
 }

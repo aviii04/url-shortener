@@ -15,7 +15,7 @@ public class UrlShortenController {
 
     @PostMapping("/tinyurl")
     public String tinyUrl(@RequestBody String longUrl){
-//    	Call service via gateway.
-        return "shortUrl";
+    	String shortUrl = urlShortenerGateway.convertToShortUrl(longUrl);
+        return shortUrl;
     }
 }

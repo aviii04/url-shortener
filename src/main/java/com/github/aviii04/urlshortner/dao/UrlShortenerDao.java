@@ -7,4 +7,8 @@ package com.github.aviii04.urlshortner.dao;
  */
 public interface UrlShortenerDao {
 
+	void saveUrl(String longUrl, String shortUrl);
+
+	String findShortUrlIfExist(String longUrl);	
+
 }
