@@ -40,7 +40,7 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
 			return shortUrl;
 		}
 				
-		int maxRetry = 0;	// Max attempt if URL can't be created/saved.
+		int maxRetry = 5;	// Max attempt if URL can't be created/saved.
 		while(maxRetry > 0) {
 			try {
 				shortUrl = defaultUrlPrefix + UrlUtils.getShortUrl();
@@ -62,10 +62,20 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
 		return shortUrl;
 	}
 
+	@Override
+	public String getLongUrl(String shortUrl) {
+		String longUrl = urlShortenerDao.getLongUrl(shortUrl);
+		if(null == longUrl) {
+			LOGGER.warn(String.format("No URL exist for given short URL [%s]. Returning NULL.", shortUrl));
+		}else {
+			LOGGER.info(String.format("Long Url [%s] found for given short URL [%s]", longUrl, shortUrl));
+		}
+		return longUrl;
+	}
+	
 	private String findShortUrlIfExist(String longUrl) {
 		LOGGER.info(String.format("Checking if short URL already exist for provided URL:", longUrl));
 		return urlShortenerDao.findShortUrlIfExist(longUrl);		
 	}
-	
 
 }
