@@ -1,8 +1,11 @@
 package com.github.aviii04.urlshortner.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.aviii04.urlshortner.gateway.UrlShortenerGateway;
@@ -13,9 +16,10 @@ public class UrlShortenController {
 	@Autowired
 	private UrlShortenerGateway urlShortenerGateway;
 
-    @PostMapping("/tinyurl")
-    public String tinyUrl(@RequestBody String longUrl){
-    	String shortUrl = urlShortenerGateway.convertToShortUrl(longUrl);
-        return shortUrl;
+    @RequestMapping(value="/tinyurl", method = RequestMethod.POST)
+    public String tinyUrl(@RequestBody Map<String, String> requestBody) throws Exception{
+    	String longUrl = requestBody.get("longUrl");
+    	return urlShortenerGateway.convertToShortUrl(longUrl);
     }
+    
 }

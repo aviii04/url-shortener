@@ -10,7 +10,7 @@ public final class UrlUtils {
 
 	
 	/*
-	 * As it is utility class no instance should be allowed to create.
+	 * As it is utility class no instance should be created for this class.
 	 */
 	private UrlUtils() {}
 	
