@@ -14,10 +14,9 @@ public interface UrlShortenerDao {
 	/**
 	 * Save entry for long URL to short URL mapping.
 	 * 
-	 * @param longUrl
-	 * @param shortUrl
+	 * @param longToShortURL - to be persisted.
 	 */
-	void saveUrl(String longUrl, String shortUrl);
+	void saveUrl(LongToShortURL longToShortURL);
 
 	/**
 	 * Return short URL for given long URL.

@@ -46,11 +46,14 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
 		}
 				
 		String shortUrl = null;
+		LongToShortURL longToShortURL = null;
 		int maxRetry = 5;	// Max attempt if unique URL can't be created/saved.
+		
 		while(maxRetry > 0) {
 			try {
 				shortUrl = defaultUrlPrefix + UrlUtils.getShortUrl();
-				urlShortenerDao.saveUrl(longUrl, shortUrl);
+				longToShortURL = buildLongToShourURL(longUrl, shortUrl, new Date());
+				urlShortenerDao.saveUrl(longToShortURL);
 				break;
 			} catch(DuplicateKeyException duplicateKeyExc) {
 				maxRetry--;
@@ -65,7 +68,7 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
 			throw new UrlShortenerException(UrlException.MAX_RETRY_EXCEEDED);
 		}
 			
-		return buildLongToShourURL(longUrl, shortUrl, new Date());
+		return longToShortURL;
 	}
 
 	@Override
@@ -81,7 +84,7 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
 	}
 	
 	private Optional<LongToShortURL> findShortUrlIfExist(String longUrl) {
-		LOGGER.info(String.format("Checking if short URL already exist for provided URL:", longUrl));
+		LOGGER.info(String.format("Checking if short URL already exist for provided URL: %s", longUrl));
 		return urlShortenerDao.findShortUrlIfExist(longUrl);		
 	}
 	

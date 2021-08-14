@@ -19,13 +19,14 @@ public class UrlShortenerDaoImpl implements UrlShortenerDao {
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
 	@Override
-	public void saveUrl(String longUrl, String shortUrl) {
+	public void saveUrl(LongToShortURL longToShortURL) {
 		String query = "insert into UrlMapping (longurl, shorturl, createdate)\r\n"
-				+ "values(:longUrl, :shortUrl, current_timestamp)";
+				+ "values(:longUrl, :shortUrl, :createdate)";
 		
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue("longUrl", longUrl);
-		namedParameters.addValue("shortUrl", shortUrl);
+		namedParameters.addValue("longUrl", longToShortURL.getLongUrl());
+		namedParameters.addValue("shortUrl", longToShortURL.getShortUrl());
+		namedParameters.addValue("createdate", longToShortURL.getCreateDate());
 		
 		jdbcTemplate.update(query, namedParameters);		
 	}
