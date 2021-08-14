@@ -1,5 +1,7 @@
 package com.github.aviii04.urlshortner.service;
 
+import com.github.aviii04.urlshortner.domain.LongToShortURL;
+
 /**
  * @author Avinash Thakur
  * 
@@ -12,17 +14,17 @@ public interface UrlShortenerService {
 	 * or else return already existing short URL.
 	 * 
 	 * @param longUrl - To be minify
-	 * @return - short URL
+	 * @return - LongToShortURL object.
 	 */
-	String convertToShortUrl(String longUrl);
+	LongToShortURL convertToShortUrl(String longUrl);
 
 	/**
 	 * Return long URL for corresponding shortURL if exist or else NULL.
 	 * 
 	 * @param shortUrl
-	 * @return - corresponding long URL
+	 * @return - LongToShortURL object.
 	 */
-	String getLongUrl(String shortUrl);
+	LongToShortURL getLongUrl(String shortUrl);
 
 }
 	

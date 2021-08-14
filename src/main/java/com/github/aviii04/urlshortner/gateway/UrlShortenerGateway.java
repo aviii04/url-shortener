@@ -1,6 +1,8 @@
 
 package com.github.aviii04.urlshortner.gateway;
 
+import com.github.aviii04.urlshortner.domain.LongToShortURL;
+
 /**
  * @author Avinash Thakur
  *
@@ -8,8 +10,8 @@ package com.github.aviii04.urlshortner.gateway;
  */
 public interface UrlShortenerGateway {
 
-	String convertToShortUrl(String longUrl);
+	LongToShortURL convertToShortUrl(String longUrl);
 
-	String getLongUrl(String shortUrl);
+	LongToShortURL getLongUrl(String shortUrl);
 
 }

@@ -5,7 +5,7 @@ import java.util.Random;
 public final class UrlUtils {
 	
 	private static final String BASE_62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	private static final int BOUND = 62;
+	private static final int BOUND = BASE_62.length();
 	private static final int SHORT_URL_LENGTH = 7;
 
 	

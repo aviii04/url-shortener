@@ -1,5 +1,9 @@
 package com.github.aviii04.urlshortner.dao;
 
+import java.util.Optional;
+
+import com.github.aviii04.urlshortner.domain.LongToShortURL;
+
 /**
  * @author Avinash Thakur
  * 
@@ -16,19 +20,19 @@ public interface UrlShortenerDao {
 	void saveUrl(String longUrl, String shortUrl);
 
 	/**
-	 * Return short URL for given long URL if exist or else NULL.
+	 * Return short URL for given long URL.
 	 * 
 	 * @param longUrl
-	 * @return - shortUrl if exist else NULL
+	 * @return - LongToShortURL object.
 	 */
-	String findShortUrlIfExist(String longUrl);
+	Optional<LongToShortURL> findShortUrlIfExist(String longUrl);
 
 	/**
-	 * Returns longUr for corresponding shortUrl if exist else NULL.
+	 * Returns longUr for corresponding shortUrl.
 	 * 
 	 * @param shortUrl
-	 * @return longUrl if exist else NULL.
+	 * @return LongToShortURL object.
 	 */
-	String getLongUrl(String shortUrl);	
+	Optional<LongToShortURL> getLongUrl(String shortUrl);
 
 }

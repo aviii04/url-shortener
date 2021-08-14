@@ -9,8 +9,15 @@ import com.github.aviii04.urlshortner.domain.exception.UrlException;
  */
 public class UrlShortenerException extends RuntimeException {
 	
+	private UrlException urlException;
+	
 	public UrlShortenerException(UrlException urlException) {
 		super(urlException.getErrMsgWithCode());
+		this.urlException = urlException;
+	}
+
+	public UrlException getUrlException() {
+		return urlException;
 	}
 
 }
