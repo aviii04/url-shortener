@@ -27,7 +27,7 @@ Service can we run in two ways:
 
 
 ### 2. Using Container (Docker):
-1. Download Docker image for the service straight away and spin it on your local using Docker Engine. Link: To be provided...
+1. Download Docker image for the service straight away and spin it on your local using Docker Engine. Link: [aviii04/url-shortener](https://hub.docker.com/r/aviii04/url-shortener)
 2. Or create Docker image on your local using following command (Assuming Docker engine already installed on your system)...
    1. Navigate to Root directory of project and run below command to create image.</br> **Command:** `docker build -f <dockerFileName> -t <ImgNameToBeCreated> <DockerFilePath>` </br>
       e.g: `docker build -f Dockerfile -t url-shortner .`
