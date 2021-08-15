@@ -1,6 +1,9 @@
 # URL-Shortener
 ## Desciption:
-A Microservice to generate minified URL for a given long URL.
+A RESTful Microservice to generate minified URL for a given long URL. Utilizes file based in-memory DB - H2. It generates fixed length short URL (in our case 7)</br>
+**Note:** While generating short URL, by default domain part of submitted URL is subsituted by another fixed domain i.e., `aviii04`</br>
+E.g:</br> Submitted Long URL: `https://avi.com/testing/testingAPI/test`</br>
+Received short URL: `https://aviii04/jRrwN9T`
 
 ## Technologies & Tools used:
 1. Language: Java 15
@@ -35,4 +38,39 @@ Service can we run in two ways:
       **Note:** In this case port of base URL will change from 8080 to 8085. i.e: `http://localhost:8085/urlshortener/`</br>
       This is just a base URL which is not mapped to any end point. Read upcoming section on how to access endpoint & interact with service.
 
-More to be added....
+### 3. Interacting with Service:
+Service provides two REST APIs through which we can interact with the service.</br>
+**Request & Response Format:** JSON
+#### Base URL:
+ 1. For JAR: `http://localhost:8080/urlshortener/`
+ 2. For Docker: `http://localhost:8085/urlshortener/`
+
+#### APIs: 
+ **1. GET:** `<baseUrl>/tinyurl?shortUrl=shortURL`</br>
+    Description: To get corresponding long/actual URL.</br>
+    Request Param: `<baseUrl>/tinyurl?shortUrl=https://aviii04/jRrwN9T` </br>
+    Response Body: JSON </br> e.g:
+    `{
+    "longUrl": "https://avi/testing/finalTesting02",
+    "shortUrl": "https://aviii04/jRrwN9T",
+    "createDate": "2021-08-15T00:00:00.000+00:00"
+}`
+
+ **2. POST:** `<baseUrl>/tinyurl`</br>
+ Description: Returns short URL for provided Long URL.</br>
+    Request Body: JSON</br> e.g:
+ `{
+    "longUrl": "https://avi/testing/testingAPI/test"
+}`</br>
+Response Body: JSON</br> e.g:
+`{
+    "longUrl": "https://avi/testing/testingAPI/test",
+    "shortUrl": "https://aviii04/jRrwN9T",
+    "createDate": "2021-08-15T00:00:00.000+00:00"
+}`
+
+ 
+ 
+
+
+
