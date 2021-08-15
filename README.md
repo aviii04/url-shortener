@@ -11,7 +11,7 @@ A Microservice to generate minified URL for a given long URL.
 
 ## How to Run:
 Service can we run in two ways:
-### 1. JAR: 
+### 1. Direclty using JAR: 
 #### As Spring Boot comes with inhoused Tomcat to run web services, we can get the application up & running by directly executing JAR.
 
 ##### Steps to Execute:
@@ -23,6 +23,16 @@ Service can we run in two ways:
    **Note**: This is just a base URL which is not mapped to any end point. Read upcoming section on how to access endpoint & interact with service.
 
 
-### 2. Docker: Using Docker Image.
+### 2. Using Container (Docker):
+1. Download Docker image for the service straight away and spin it on your local using Docker Engine. Link: To be provided...
+2. Or create Docker image on your local using following command (Assuming Docker engine already installed on your system)...
+   1. Navigate to Root directory of project and run below command to create image.</br> **Command:** `docker build -f <dockerFileName> -t <ImgNameToBeCreated> <DockerFilePath>` </br>
+      e.g: `docker build -f Dockerfile -t url-shortner .`
+   3.  Check if generated image is available using command `docker images`.
+   4.  Run below command to start containeraized application using command...</br> `docker run -p <dockerPort>:<applicationPort> <imageName>`</br>
+      In our case: `docker run -p 8085:8080 url-shortner`.
+      
+      **Note:** In this case port of base URL will change from 8080 to 8085. i.e: `http://localhost:8085/urlshortener/`</br>
+      This is just a base URL which is not mapped to any end point. Read upcoming section on how to access endpoint & interact with service.
 
 More to be added....
